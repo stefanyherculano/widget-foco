@@ -10,10 +10,32 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+:root {
+--rl-text: rgba(55, 53, 47, 1);
+--rl-btn-bg: rgba(255, 255, 255, 0.9);
+--rl-btn-bg-hover: rgba(248, 248, 247, 1);
+--rl-btn-bg-active: rgba(240, 240, 239, 1);
+--rl-btn-border: rgba(55, 53, 47, 0.16);
+--rl-btn-shadow: rgba(15, 15, 15, 0.1) 0px 1px 2px;
+--rl-btn-shadow-hover: rgba(15, 15, 15, 0.15) 0px 2px 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+:root {
+--rl-text: rgba(255, 255, 255, 0.81);
+--rl-btn-bg: rgba(255, 255, 255, 0.055);
+--rl-btn-bg-hover: rgba(255, 255, 255, 0.09);
+--rl-btn-bg-active: rgba(255, 255, 255, 0.13);
+--rl-btn-border: rgba(255, 255, 255, 0.094);
+--rl-btn-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
+--rl-btn-shadow-hover: rgba(0, 0, 0, 0.45) 0px 2px 4px;
+}
+}
+
 html, body {
 height: 100%;
 background-color: transparent;
-color: #2C2C2B;
+color: var(--rl-text);
 overflow: hidden;
 -webkit-font-smoothing: antialiased;
 }
@@ -33,7 +55,7 @@ gap: 14px;
 font-family: 'Playfair Display', serif;
 font-weight: 400;
 font-size: 108px;
-color: #2C2C2B;
+color: var(--rl-text);
 letter-spacing: -0.03em;
 line-height: 1;
 font-variant-numeric: tabular-nums;
@@ -49,24 +71,24 @@ align-items: center;
 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 font-weight: 500;
 font-size: 14px;
-color: #2C2C2B;
-background-color: rgba(255, 255, 255, 0.9);
-border: 1px solid rgba(55, 53, 47, 0.16);
+color: var(--rl-text);
+background-color: var(--rl-btn-bg);
+border: 1px solid var(--rl-btn-border);
 border-radius: 6px;
 padding: 6px 14px;
 cursor: pointer;
-box-shadow: rgba(15, 15, 15, 0.1) 0px 1px 2px;
+box-shadow: var(--rl-btn-shadow);
 transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .rl-cron-btn:hover {
-background-color: rgba(248, 248, 247, 1);
-box-shadow: rgba(15, 15, 15, 0.15) 0px 2px 4px;
+background-color: var(--rl-btn-bg-hover);
+box-shadow: var(--rl-btn-shadow-hover);
 }
 
 .rl-cron-btn:active {
-background-color: rgba(240, 240, 239, 1);
-box-shadow: rgba(15, 15, 15, 0.05) 0px 1px 1px;
+background-color: var(--rl-btn-bg-active);
+box-shadow: var(--rl-btn-shadow);
 }
 
 @media (max-width: 600px) {
