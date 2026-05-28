@@ -30,8 +30,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: flex-start;
-padding: 12px 12px 32px 12px;
-gap: 10px;
+padding: 14px 12px 32px 12px;
+gap: 16px;
 }
 
 .rl-pomo-display {
@@ -49,7 +49,6 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 font-weight: 500;
 font-size: 13px;
 color: rgba(55, 53, 47, 0.6);
-margin-top: -2px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -63,7 +62,6 @@ gap: 8px;
 align-items: center;
 width: 100%;
 max-width: 720px;
-margin-top: 4px;
 }
 
 .rl-btn {
@@ -137,7 +135,6 @@ grid-template-columns: repeat(4, 1fr);
 gap: 8px;
 width: 100%;
 max-width: 720px;
-margin-top: 4px;
 }
 
 .rl-card {
@@ -282,7 +279,7 @@ display: block;
 }
 
 @media (max-width: 480px) {
-.rl-pomo { padding: 10px 10px 28px 10px; gap: 8px; }
+.rl-pomo { padding: 12px 10px 28px 10px; gap: 14px; }
 .rl-pomo-display { font-size: 58px; }
 .rl-card-value { font-size: 25px; }
 .rl-card-value-unit { font-size: 10px; }
@@ -566,4 +563,24 @@ cyclesUp.addEventListener('click', function() {
 if (totalCycles < 10) {
 totalCycles++;
 valCycles.textContent = totalCycles;
-render(running ? endTime - Date.now()
+render(running ? endTime - Date.now() : (remaining > 0 ? remaining : phaseDuration()));
+}
+});
+
+cyclesDown.addEventListener('click', function() {
+if (totalCycles > 2) {
+totalCycles--;
+if (cycle > totalCycles) cycle = totalCycles;
+valCycles.textContent = totalCycles;
+render(running ? endTime - Date.now() : (remaining > 0 ? remaining : phaseDuration()));
+}
+});
+
+remaining = phaseDuration();
+render(remaining);
+
+})();
+</script>
+
+</body>
+</html>
